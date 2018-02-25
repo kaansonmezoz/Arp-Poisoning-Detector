@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <pcap.h>
 #include <arpa/inet.h>	   // ntohs()
-#include <sys/unistd.h>		// sleep()
+#include <sys/unistd.h>    // sleep()
 #include <string.h>
 
 #define ARP_REQUEST 1
@@ -37,15 +37,15 @@ int equalIP(u_char *);
 arpPackets arpPacket1, arpPacket2;  // ARP packets going to be sniffed
 
 int main(){
-   char *device;							// Device name for sniffing on
-   char errMsg[PCAP_ERRBUF_SIZE];	// Error message
+   char *device;		    // Device name for sniffing on
+   char errMsg[PCAP_ERRBUF_SIZE];   // Error message
    pcap_t *deviceHandle;            // Session handler
-   struct bpf_program fp;				// Compiled filter expression
+   struct bpf_program fp;	    // Compiled filter expression
    char filter_exp[] = "arp";       // Filter expression for packets
-   bpf_u_int32 mask; 					// Netmask of sniffing device
-   bpf_u_int32 net;						// IP address for sniffing device
+   bpf_u_int32 mask; 		    // Netmask of sniffing device
+   bpf_u_int32 net;		    // IP address for sniffing device
 	struct pcap_pkthdr header;       	
-   const u_char *packet;				// Packed sniffed by sniffer
+   const u_char *packet;	    // Packed sniffed by sniffer
    arphdr_t *arphdr = NULL;
    int i;
    //  Searching for device
